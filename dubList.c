@@ -23,6 +23,7 @@ void printValue(struct Node *value)
     }
 }
 
+// Added a new node and place it at the top of the list
 void addToHead(struct Node **headNode, int new_data)
 {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
@@ -39,6 +40,7 @@ void addToHead(struct Node **headNode, int new_data)
     (*headNode) = newNode;
 }
 
+// Added a new node and place it at the end of the list
 void addToEnd(struct Node **head_ref, int new_data)
 {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
@@ -64,6 +66,7 @@ void addToEnd(struct Node **head_ref, int new_data)
     newNode->prev = last;
 }
 
+// get number of elements for the list and return it as an integer
 int getLength(struct Node *head_ref)
 {
     int len = 0;
@@ -82,6 +85,7 @@ int getLength(struct Node *head_ref)
     return len;
 }
 
+// Not completed yet, get element at given index
 int getValue(struct Node **value, int key)
 {
     struct Node *last = NULL;
