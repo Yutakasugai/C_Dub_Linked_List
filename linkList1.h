@@ -276,3 +276,28 @@ void findIndex(struct Node *head_ref, int key)
     }
     
 }
+
+//Connect two list together 
+void appendList(struct Node *list1, struct Node *list2)
+{
+    struct Node *L1 = list1;
+    struct Node *L2 = list2;
+    if (list1 == NULL || list2 == NULL)
+    {
+        printf("One of the lists is empty. Please ensure both lists have at least one node\n");
+        return;
+    }
+
+    //Traverse the first list till the last node 
+    while (L1->next != NULL)
+    {
+        L1 = L1->next;
+        
+    }
+
+    L1->next = L2;
+    L2->prev = L1;
+    
+
+
+}
