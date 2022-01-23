@@ -40,7 +40,7 @@ void addToHead(struct Node **headNode, int new_data)
     (*headNode) = newNode;
 }
 
-// Added a new node and place it at the end of the list
+// added a new node and place it at the end of the list
 void addToEnd(struct Node **head_ref, int new_data)
 {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
@@ -85,34 +85,48 @@ int getLength(struct Node *head_ref)
     return len;
 }
 
-// Not completed yet, get element at given index
-int getValue(struct Node **value, int key)
+// Destory all nodes from the list
+void destoryList(struct Node **head)
 {
-    struct Node *last = NULL;
-    struct Node *current = *value;
-
-    int len = 0;
-
-    if (value == NULL)
-    {
-        printf("The liost is empty");
-        return 0;
-    }
-
-    // last = current->prev;
-    // printf("%d", last->data);
+    struct Node *current = *head;
+    struct Node *next;
 
     while (current != NULL)
     {
-        last->prev = NULL;
-        current = last;
-        current = current->next;
-        len++;
-        printf("\n%d %d\n", len, current->data);
+        next = current->next;
+        free(current);
+        current = next;
     }
-   
 
-    return 0;
+    *head = NULL;
+}
+
+// Not completed yet, get element at given index
+int getValue(struct Node **value, int key)
+{
+    struct Node *temp_ref;
+    int counter = 0;
+
+    temp_ref = (*value);
+
+    while (temp_ref != NULL)
+    {
+        counter++;
+        printf("%d %d ", temp_ref->data, counter);
+        temp_ref = temp_ref->next;
+
+        if (counter == key)
+        {
+            temp_ref->data = temp_ref->prev;
+            printf("\n\n%d \n", temp_ref->data);
+            return temp_ref->data;
+        }
+    }
+
+    // temp_ref = (*value);
+    // free(temp_ref);
+
+    return 4;
 }
 
 int main()
@@ -159,7 +173,11 @@ int main()
 
     int length;
     length = getLength(head);
-    printf("\n\nThe number of elements is: %d", length);
+    printf("\n\nThe number of elements is: %d\n\n", length);
+
+    // printf("\n\nDestory all the list: ");
+    // destoryList(&head);
+    // printValue(head);
 
     int k;
     k = getValue(&head, 1);
