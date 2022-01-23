@@ -4,11 +4,12 @@
 
 int main()
 {
-    //Declare variable 
+    //Declare variables
     struct Node *head = NULL;
+    struct Node *List2 = NULL;
 
     //Create a list of 5 nodes 
-    printf("\n\nList of five nodes: ");
+    printf("List1 of five nodes: ");
     addToHead(&head, 50);
     addToHead(&head, 40);
     addToHead(&head, 30);
@@ -16,8 +17,13 @@ int main()
     addToHead(&head, 10);
     printValue(head);
 
+    printf("List2 of 3 nodes: ");
+    addToHead(&List2, 3);
+    addToHead(&List2, 2);
+    addToHead(&List2, 1);
+    printValue(List2);
     //Print the length of the list 
-
+    printf("\nBelow Example is corresponding to List1.\n");
     int length;
     length = getLength(head);
     printf("\n\nThe number of elements in the list is: %d\n", length);
@@ -40,17 +46,24 @@ int main()
     findIndex(head, 40);
     findIndex(head, 10);
 
+    //Append two list together
+    printf("\nAppend two list togther: \n");
+    appendList(head, List2);
+    printValue(head);
+    printf("\n");
     //Delete a node at specific location 
     removeNodeAtPos(&head, 0);
+    printf("Remove node at position 0\n");
     printf("The new List is : ");
     printValue(head);
     removeNodeAtPos(&head, 2);
+    printf("Remove node at position 2\n");
     printf("The new List is : ");
     printValue(head);
 
     //delete all elements in the list 
-    printf("\n\nDestory all the list: ");
-    
+    printf("\nDestory all the list.");
+    destoryList(head);
+    destoryList(List2);
 
-    printValue(head);
 }
