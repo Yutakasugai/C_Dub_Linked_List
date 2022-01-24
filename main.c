@@ -1,57 +1,63 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "linkList1.h"
+#include "linkList.h"
 
 int main()
 {
-    //Declare variables
+    // Declare variables
     struct Node *head = NULL;
     struct Node *List2 = NULL;
 
-    //Create a list of 5 nodes 
-    printf("List1 of five nodes: ");
-    addToHead(&head, 50);
-    addToHead(&head, 40);
-    addToHead(&head, 30);
-    addToHead(&head, 20);
-    addToHead(&head, 10);
+    // Create a list of 5 nodes
+    printf("\n\nList1 of five nodes: ");
+    addNewNode(&head, 50);
+    addNewNode(&head, 40);
+    addNewNode(&head, 30);
+    addNewNode(&head, 20);
+    addNewNode(&head, 10);
     printValue(head);
 
     printf("List2 of 3 nodes: ");
-    addToHead(&List2, 3);
-    addToHead(&List2, 2);
-    addToHead(&List2, 1);
+    addNewNode(&List2, 3);
+    addNewNode(&List2, 2);
+    addNewNode(&List2, 1);
     printValue(List2);
-    //Print the length of the list 
+
+    // Print the length of the list
     printf("\nBelow Example is corresponding to List1.\n");
+
+    // Get a number of length and return the value as an integer
     int length;
     length = getLength(head);
     printf("\n\nThe number of elements in the list is: %d\n", length);
 
-    //Get the first node value 
+    // Get the first node value
     getFirst(head);
 
-    //Get the last node value 
+    // Get the last node value
     getLast(head);
 
-    //Get data at specific location - list starts from 0-n
+    // Get data at specific location - list starts from 0-n
     getItem(head, 2);
     getItem(head, 4);
     getItem(head, 5);
 
-    //Obtain node's index based on its data value 
+    // Obtain node's index based on its data value
     printf("\n");
-    findIndex(head, 20);
-    findIndex(head, 50);
-    findIndex(head, 40);
-    findIndex(head, 10);
+    int val = findIndex(head, 20);
+    printf("The number of index in the list where the given value 20 is: %d\n", val);
+    val = findIndex(head, 50);
+    printf("The number of index in the list where the given value 50 is: %d\n", val);
+    val = findIndex(head, 30);
+    printf("The number of index in the list where the given value 30 is: %d\n", val);
 
-    //Append two list together
+    // Append two list together
     printf("\nAppend two list togther: \n");
     appendList(head, List2);
     printValue(head);
     printf("\n");
-    //Delete a node at specific location 
+
+    // Delete a node at specific location
     removeNodeAtPos(&head, 0);
     printf("Remove node at position 0\n");
     printf("The new List is : ");
@@ -60,10 +66,14 @@ int main()
     printf("Remove node at position 2\n");
     printf("The new List is : ");
     printValue(head);
+    removeNodeAtPos(&head, 5);
+    printf("Remove node at position 5\n");
+    printf("The new List is : ");
+    printValue(head);
 
-    //delete all elements in the list 
-    printf("\nDestory all the list.");
-    destoryList(head);
-    destoryList(List2);
+    // delete all elements in the list
+    printf("\nDestory all the list.\n");
+    destoryList(&head);
 
+    return 0;
 }
